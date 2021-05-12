@@ -30,10 +30,14 @@ chosing a learning rate:
 
 ## what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
 * batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
+     
      ![image](https://user-images.githubusercontent.com/63558665/117908665-d2730280-b2a6-11eb-8265-935f26e9e2d8.png)
      * advantage:computational efficient,it produces a stable error gradient and a stable convergence,Less oscillations and noisy steps taken towards the global minima of the loss function due to updating the parameters by computing the average of all the training samples rather than the value of a single sample
      * disadvantage:stable error gradient can lead to a local minimum.The entire training set can be too large to process in the memory due to which additional memory might be needed. Depending on computer resources it can take too long for processing all the training samples as a batch
 * stochastic gradient descent: one training sample (example) is passed through the neural network at a time and the parameters (weights) of each layer are updated with the computed gradient
+
+    ![image](https://user-images.githubusercontent.com/63558665/117910801-98a3fb00-b2aa-11eb-864b-de57abb9ff20.png)
+
     * advantage:
     It is easier to fit into memory due to a single training sample being processed by the network
     It is computationally fast as only one sample is processed at a time
@@ -44,6 +48,18 @@ chosing a learning rate:
     It may take longer to achieve convergence to the minima of loss function
     Frequent update causes computation expensive due to using all resources for processing one training sample at a time
     It loses the advanatage of vetorized operations
+ * minni-batch gradient descent: Mini-batch gradient descent is the go-to method since it’s a combination of the concepts of SGD and batch gradient descent. It simply splits the training dataset into small batches and performs an update for each of those batches
+ 
+    ![image](https://user-images.githubusercontent.com/63558665/117910758-80cc7700-b2aa-11eb-85e9-a93a486a046f.png)
+    
+    * advantage:
+    Easily fits in the memory
+    It is computationally efficient
+    Benefit from vectorization
+    If stuck in local minimums, some noisy steps can lead the way out of them
+    Average of the training samples produces stable error gradients and convergence
+
+ 
  
  
 
