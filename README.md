@@ -11,6 +11,9 @@ example: House pricing
 * Logistic Regression is used to predict the categorical dependent variable using a given set of independent variables, and it is used for solving classification problem.In logistic Regression, we predict the values of categorical variables.Maximum likelihood estimation method is used for estimation of accuracy.The output of Logistic Regression problem can be only between the 0 and 1.In logistic regression, we pass the weighted sum of inputs through an activation function that can map values in between 0 and 1. Such activation function is known as sigmoid function and the curve obtained is called as sigmoid curve.
 example:credit card default
 
+
+
+
 # what is gradient descent?
 Gradient descent is an optimization algorithm that's used when training a machine learning model. It's based on a convex function and tweaks its parameters iteratively to   minimize a given function to its local minimum.Gradient descent is a convex function.
 
@@ -19,6 +22,9 @@ The equation below describes what gradient descent does: b is the next position 
     ![image](https://user-images.githubusercontent.com/63558665/117905892-e9632600-b2a1-11eb-9a4d-6a7eb210113c.png)
 
 So this formula basically tells us the next position we need to go, which is the direction of the steepest descent
+
+
+
 # how to choose the learning rate? and how to choose learning rate
 For gradient descent to reach the local minimum we must set the learning rate to an appropriate value, which is neither too low nor too high. This is important because if the steps it takes are too big, it may not reach the local minimum because it bounces back and forth between the convex function of gradient descent (see left image below). If we set the learning rate to a very small value, gradient descent will eventually reach the local minimum but that may take a while(see right image).
    ![image](https://user-images.githubusercontent.com/63558665/117906321-ace3fa00-b2a2-11eb-9767-71d24d1923c2.png)
@@ -27,6 +33,8 @@ in order to choose a good learning, plotting the cost function as the optimizati
 chosing a learning rate:
 * Try multiple choise,crude rule of thumb: update changes weight about 01-1%
 * Linesearch: keep walking in the same direction as long as 𝑓 is still decreasing
+
+
 
 # what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
 1. batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
@@ -58,6 +66,8 @@ chosing a learning rate:
     Benefit from vectorization
     If stuck in local minimums, some noisy steps can lead the way out of them
     Average of the training samples produces stable error gradients and convergence
+ 
+ 
  # what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
  * Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets.Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data. and then we need to simplefy the model by introducing the regularization L1 and L2
  * L1 regularization (Lasso regression) to force some coefficients to be exactly zero. This means some features are completely ignored by the model.If lambda is zero then we will get back OLS whereas very large value will make coefficients zero hence it will under-fit
@@ -70,6 +80,9 @@ chosing a learning rate:
     ![image](https://user-images.githubusercontent.com/63558665/117913034-9e9bdb00-b2ae-11eb-81f1-97763aa9163f.png)
     
 The key difference between these techniques is that Lasso shrinks the less important feature’s coefficient to zero thus, removing some feature altogether. So, this works well for feature selection in case we have a huge number of features.
+
+
+
 # what is mean sqaured error, cross-entropy ? and what is the difference ?
 * MSE measures the average of the squares of the errors
     
@@ -86,9 +99,18 @@ An activation function in a neural network defines how the weighted sum of the i
 * Tanh: tanh is also like logistic sigmoid but better. The range of the tanh function is from (-1 to 1). tanh is also sigmoidal (s - shaped).The advantage is that The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to -1.0.
 
     ![image](https://user-images.githubusercontent.com/63558665/117915997-54b5f380-b2b4-11eb-8634-8374ed7a6fea.png)
-* ReLU: the ReLU is half rectified (from bottom). f(z) is zero when z is less than zero and f(z) is equal to z when z is above or equal to zero.The issue for ReLU is that all the negative values become zero immediately which decreases the ability of the model to fit or train from the data properly. That means any negative input given to the ReLU activation function turns the value into zero immediately in the graph, which in turns affects the resulting graph by not mapping the negative values appropriately.
+* ReLU: the ReLU is half rectified (from bottom). f(z) is zero when z is less than zero and f(z) is equal to z when z is above or equal to zero.
+     * simple, easy to calcualte, gradient is 1, which can partially solve the gradient vanishing problem
+     * some part of neural network will never update.All the negative values become zero immediately which decreases the ability of the model to fit or train from the data properly. That means any negative input given to the ReLU activation function turns the value into zero immediately in the graph, which in turns affects the resulting graph by not mapping the negative values appropriately.
 
      ![image](https://user-images.githubusercontent.com/63558665/117916165-99418f00-b2b4-11eb-84e1-7f389050b1ce.png)
+
+* ELU:
+     * avoid the dying ReLU
+     * high computation cost
+
+      ![image](https://user-images.githubusercontent.com/63558665/117920827-9e570c00-b2bd-11eb-8ab2-0918a2596b3e.png)
+
 * Leaky ReLU:It is an attempt to solve the dying ReLU problem.The leak helps to increase the range of the ReLU function. Usually, the value of a is 0.01 or so.Therefore the range of the Leaky ReLU is (-infinity to infinity)
 
      ![image](https://user-images.githubusercontent.com/63558665/117916241-c42be300-b2b4-11eb-9c71-1424670f90fd.png)
@@ -102,5 +124,58 @@ An activation function in a neural network defines how the weighted sum of the i
      Output activation function:
      
      ![image](https://user-images.githubusercontent.com/63558665/117917100-66989600-b2b6-11eb-956c-806cd1c85ff0.png)
+     
+     
 # Does global optimal can be reached by SGD, why？
 when the learning rates decrease with an appropriate rate, and subject to relatively mild assumptions, stochastic gradient descent converges almost surely to a global minimum when the objective function is convex or pseudoconvex, and otherwise converges almost surely to a local minimum
+
+# what is convex optimization and non-convex optimization?
+* Non-convex: local minima and sensitive to initilization
+* convex: global minima
+
+
+# what vanishing/exploding gradient?
+
+If each term is (much) greater than 1 -->explosion of gradients
+If each term is (much) less than 1 -->vanishing gradients
+solution for gradient vanishing:
+* carefully initilization--want variance to remian approximate constant since variance increase in backward pass causes exploding gradient and variance decrease in backward causes vanishing gradient
+     * "MSRA initialization": weights=Gaussiance with 0 mean and variance =2/(k*k*d)
+     
+* batch normalization:normalize so that each layer output has zero mean and unit variance
+      * compute mean and variance for each channel
+      * aggregate over batch
+      * subtract mean, divide by std
+      * no"batchs" during test,at test, The mean/std are not computed  based on the batch. Instead, a single  fixed empirical mean of activations  during training is used!
+      * after Fully  Connected or Convolutional layers,  and before nonlinearity!
+      * batch normalization for fully-connected network-->layer normalization
+      
+      ![image](https://user-images.githubusercontent.com/63558665/117922902-2f7bb200-b2c1-11eb-8c75-32717ca566f1.png)
+
+      * why batch normalize?
+            Improves gradient flow through  the network
+            Allows higher learning rates
+            Reduces the strong dependence  on initialization
+            Acts as a form of regularization  in a funny way, and slightly  reduces the need for dropout
+      
+      ![image](https://user-images.githubusercontent.com/63558665/117922474-86cd5280-b2c0-11eb-8c58-5cbe6d707002.png)
+
+ 
+* Residual connections:allow gradients to flow unimpeded, instead of single layers, have residual connections over block
+      * doubling of feature channel
+      * increase channel by 1x1 convolution
+      * decrease spatial resoution by subsampling
+      
+      ![image](https://user-images.githubusercontent.com/63558665/117920511-f80b0680-b2bc-11eb-9ea0-bd53a72c971c.png)
+* bottleneck blocks:use 1x1 to project to lower dimensionality do convolution, then come back-->avoid that when channels increases, 3x3 convolutions introduce many parameters.
+      
+      ![image](https://user-images.githubusercontent.com/63558665/117921786-56d17f80-b2bf-11eb-8c9b-930a6261fe5a.png)
+
+# why 1x1 convolution?
+* The 1×1 filter can be used to create a linear projection of a stack of feature maps.
+* The projection created by a 1×1 can act like channel-wise pooling and be used for dimensionality reduction.
+* The projection created by a 1×1 can also be used directly or be used to increase the number of feature maps in a model.
+
+
+
+     
