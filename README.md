@@ -501,5 +501,19 @@ Transfer learning is an optimization, a shortcut to saving time or getting bette
    ![image](https://user-images.githubusercontent.com/63558665/118047014-24b83000-b348-11eb-9dea-13313f4580c3.png)
  
  https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a
+#### 14) What is the significance of Residual Networks? 
+The main thing that residual connections did was allow for direct feature access from previous layers. This makes information propagation throughout the network much easier. One very interesting paper about this shows how using local skip connections gives the network a type of ensemble multi-path structure, giving features multiple paths to propagate throughout the network.
 
- 
+#### 15) Why do we have max-pooling in classification CNNs? [src]
+for a role in Computer Vision. Max-pooling in a CNN allows you to reduce computation since your feature maps are smaller after the pooling. You don't lose too much semantic information since you're taking the maximum activation. There's also a theory that max-pooling contributes a bit to giving CNNs more translation in-variance. Check out this great video from Andrew Ng on the benefits of max-pooling.
+
+#### 16 ) Why do we use convolutions for images rather than just FC layers? [src]
+Firstly, convolutions preserve, encode, and actually use the spatial information from the image. If we used only FC layers we would have no relative spatial information. Secondly, Convolutional Neural Networks (CNNs) have a partially built-in translation in-variance, since each convolution kernel acts as it's own filter/feature detector.
+
+#### 17) Why is ReLU better and more often used than Sigmoid in Neural Networks? [src]
+Imagine a network with random initialized weights ( or normalised ) and almost 50% of the network yields 0 activation because of the characteristic of ReLu ( output 0 for negative values of x ). This means a fewer neurons are firing ( sparse activation ) and the network is lighter.
+
+
+ ## Reference
+ * https://github.com/AllenCX/DS-ML-Interview-Questions
+ * https://github.com/andrewekhalel/MLQuestions
