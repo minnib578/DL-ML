@@ -389,7 +389,7 @@ If all the weights are initialized to zeros, the derivatives will remain same fo
 * why randnom weight initialization?
  In this method, the weights are initialized very close to zero, but randomly. This helps in breaking symmetry when backprogragating and every neuron is no longer performing the same computation.
  
- #### 8) optimizer
+ #### 10) optimizer
 * Gradient Descent:
    * Batch gradient descent
        * Advantages:
@@ -401,10 +401,104 @@ If all the weights are initialized to zeros, the derivatives will remain same fo
                Weights are changed after calculating gradient on the whole dataset. So, if the dataset is too large than this may take years to converge to the minima.
                Requires large memory to calculate gradient on the whole dataset.
    * Stochastic gradient descent
+       * Advantages:
+               Frequent updates of model parameters hence, converges in less time.
+               Requires less memory as no need to store values of loss functions.
+               May get new minima’s.
+       * Disadvantages:
+               High variance in model parameters.
+               May shoot even after achieving global minima.
+               To get the same convergence as gradient descent needs to slowly reduce the value of learning rate.
    * Mini-batch gradient descent
-* Adaptive:
-   * Adagrad
-   * Adadelta
-   * RMSprop
-   * Adam
+       * Advantages:
+               Frequently updates the model parameters and also has less variance.
+               Requires medium amount of memory.
 
+All types of Gradient Descent have some challenges:
+Choosing an optimum value of the learning rate. If the learning rate is too small than gradient descent may take ages to converge.
+Have a constant learning rate for all the parameters. There may be some parameters which we may not want to change at the same rate.
+May get trapped at local minima.
+
+* Adaptive:
+   * Momentum: Momentum was invented for reducing high variance in SGD and softens the convergence. It accelerates the convergence towards the relevant direction and reduces the fluctuation to the irrelevant direction.
+       * Advantages:
+               Reduces the oscillations and high variance of the parameters.
+               Converges faster than gradient descent.
+        * Disadvantages:
+               One more hyper-parameter is added which needs to be selected manually and accurately.
+   * Adagrad: One of the disadvantages of all the optimizers explained is that the learning rate is constant for all parameters and for each cycle. This optimizer changes the learning rate. It changes the learning rate ‘η’ for each parameter and at every time step ‘t’. learning rate which is modified for given parameter θ(i) at a given time based on previous gradients calculated for given parameter θ(i).
+        * Advantages:
+               Learning rate changes for each training parameter.
+               Don’t need to manually tune the learning rate.
+               Able to train on sparse data.
+         * Disadvantages:
+               Computationally expensive as a need to calculate the second order derivative.
+               The learning rate is always decreasing results in slow training.
+   * Adadelta:It is an extension of AdaGrad which tends to remove the decaying learning Rate problem of it. Instead of accumulating all previously squared gradients, Adadelta limits the window of accumulated past gradients to some fixed size w. In this exponentially moving average is used rather than the sum of all the gradients.
+        * Advantages:
+               Now the learning rate does not decay and the training does not stop.
+        * Disadvantages:
+               Computationally expensive.
+   * Adam: Adam (Adaptive Moment Estimation) works with momentums of first and second order. The intuition behind the Adam is that we don’t want to roll so fast just because we can jump over the minimum, we want to decrease the velocity a little bit for a careful search. In addition to storing an exponentially decaying average of past squared gradients like AdaDelta, Adam also keeps an exponentially decaying average of past gradients M(t).
+       * Advantages:
+               The method is too fast and converges rapidly.
+               Rectifies vanishing learning rate, high variance.
+        * Disadvantages:
+               Computationally costly.
+how to choose a optimizer?
+Adam is the best optimizers. If one wants to train the neural network in less time and more efficiently than Adam is the optimizer.
+For sparse data use the optimizers with dynamic learning rate.
+If, want to use gradient descent algorithm than min-batch gradient descent is the best option.
+
+#### 11) tricks for designing,training a model?
+Design:
+* Reduce filter sizes (except possibly at the lowest layer), factorize filters aggressively
+* Use 1x1 convolutions to reduce and expand the number of feature maps judiciously
+* Use skip connections and/or create multiple paths through the network
+
+training:
+* Training tricks and details: initialization, regularization, normalization
+* Training data augmentation
+* Averaging classifier outputs over multiple crops/flips
+* Ensembles of networks
+
+#### 12) what are RNN, LSTM, GRU? And their pros and cons?
+* RNN:
+Recurrent Neural Network is a generalization of feedforward neural network that has an internal memory. RNN is recurrent in nature as it performs the same function for every input of data while the output of the current input depends on the past one computation. After producing the output, it is copied and sent back into the recurrent network. For making a decision, it considers the current input and the output that it has learned from the previous input.
+
+   ![image](https://user-images.githubusercontent.com/63558665/118041468-d4899f80-b340-11eb-9d3e-6caa5e07bb28.png)
+   
+  * Advantages of Recurrent Neural Network
+      RNN can model sequence of data so that each sample can be assumed to be dependent on previous ones
+      Recurrent neural network are even used with convolutional layers to extend the effective pixel neighbourhood.
+  * Disadvantages of Recurrent Neural Network
+      Gradient vanishing and exploding problems.
+      Training an RNN is a very difficult task.
+      It cannot process very long sequences if using tanh or relu as an activation function.
+      there is no finer control over which part of the context needs to be carried forward and how much of the past needs to be ‘forgotten’. 
+ * LSTM:(sigmoid function)
+Long Short-Term Memory (LSTM) networks are a modified version of recurrent neural networks, which makes it easier to remember past data in memory. The vanishing gradient problem of RNN is resolved here. LSTM is well-suited to classify, process and predict time series given time lags of unknown duration. It trains the model by using back-propagation.
+    * advantage: solve the vanishing gradient
+    * disadvantage:
+        it fail to remove vanishing gradient completely
+        Memory and input are added
+        it requires a lot of resources and time to get trained and become ready for real-world applications
+        LSTMs get affected by different random weight initializations and hence behave quite similar to that of a feed-forward neural net
+        LSTMs are prone to overfitting and it is difficult to apply the dropout algorithm to curb this issue
+* GRU:A very simplified version of the LSTM, which merges forget and input gate into a single ‘update’ gate and merges cell and hidden state
+     * advantage:Has 
+          fewer parameters than an LSTM
+          it has been shown to outperform LSTM on some tasks
+          GRU uses less memory and is faster than LSTM
+     * disadvantage: 
+           slow convergence and low learning efficiency
+ #### 13) what is transfer learning and why?
+Transfer learning is a machine learning method where a model developed for a task is reused as the starting point for a model on a second task.train a model by source data, then fine-tune the model by target data!
+
+Transfer learning is an optimization, a shortcut to saving time or getting better performance.
+* Challenge: only limited target data, so be careful about overfitting
+
+   ![image](https://user-images.githubusercontent.com/63558665/118047014-24b83000-b348-11eb-9dea-13313f4580c3.png)
+ https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a
+
+ 
