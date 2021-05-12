@@ -29,7 +29,7 @@ chosing a learning rate:
 * Linesearch: keep walking in the same direction as long as 𝑓 is still decreasing
 
 4. what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
-* batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
+### batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
      ![image](https://user-images.githubusercontent.com/63558665/117908665-d2730280-b2a6-11eb-8265-935f26e9e2d8.png)
 advantage:computational efficient,it produces a stable error gradient and a stable convergence,Less oscillations and noisy steps taken towards the global minima of the loss function due to updating the parameters by computing the average of all the training samples rather than the value of a single sample
 disadvantage:stable error gradient can lead to a local minimum.The entire training set can be too large to process in the memory due to which additional memory might be needed. Depending on computer resources it can take too long for processing all the training samples as a batch
