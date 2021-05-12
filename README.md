@@ -1,5 +1,5 @@
 # Linear Regression and Logistic Regression
-# What is linear regression? What is logistic regression? What is the difference?
+##  What is linear regression? What is logistic regression? What is the difference?
 * Linear regression is used to predict the continuous dependent variable using a given set of independent variables, and it is used for solving Regression problem.In Linear regression, we predict the value of continuous variables. Least square estimation method is used for estimation of accuracy.
 example: House pricing
 
@@ -14,7 +14,7 @@ example:credit card default
 
 
 
-# what is gradient descent?
+##  what is gradient descent?
 Gradient descent is an optimization algorithm that's used when training a machine learning model. It's based on a convex function and tweaks its parameters iteratively to   minimize a given function to its local minimum.Gradient descent is a convex function.
 
 how does gradient descent work?
@@ -25,7 +25,7 @@ So this formula basically tells us the next position we need to go, which is the
 
 
 
-# how to choose the learning rate? and how to choose learning rate
+## how to choose the learning rate? and how to choose learning rate
 For gradient descent to reach the local minimum we must set the learning rate to an appropriate value, which is neither too low nor too high. This is important because if the steps it takes are too big, it may not reach the local minimum because it bounces back and forth between the convex function of gradient descent (see left image below). If we set the learning rate to a very small value, gradient descent will eventually reach the local minimum but that may take a while(see right image).
    ![image](https://user-images.githubusercontent.com/63558665/117906321-ace3fa00-b2a2-11eb-9767-71d24d1923c2.png)
 if the learning rate is up and down interatively, it may be caused by high learning rate.
@@ -36,7 +36,7 @@ chosing a learning rate:
 
 
 
-# what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
+## what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
 1. batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
      
      ![image](https://user-images.githubusercontent.com/63558665/117908665-d2730280-b2a6-11eb-8265-935f26e9e2d8.png)
@@ -68,7 +68,7 @@ chosing a learning rate:
     Average of the training samples produces stable error gradients and convergence
  
  
- # what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
+ ## what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
  * Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets.Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data. and then we need to simplefy the model by introducing the regularization L1 and L2
  * L1 regularization (Lasso regression) to force some coefficients to be exactly zero. This means some features are completely ignored by the model.If lambda is zero then we will get back OLS whereas very large value will make coefficients zero hence it will under-fit
  * L2 regularization (Ridge regression) adds “squared magnitude” of coefficient as penalty term to the loss function.if lambda is zero then you can imagine we get back OLS. However, If lambda is very large then it will add too much weight and it will lead to under-fitting.
@@ -83,7 +83,7 @@ The key difference between these techniques is that Lasso shrinks the less impor
 
 
 
-# what is mean sqaured error, cross-entropy ? and what is the difference ?
+## what is mean sqaured error, cross-entropy ? and what is the difference ?
 * MSE measures the average of the squares of the errors
     
     ![image](https://user-images.githubusercontent.com/63558665/117914164-c3914d80-b2b0-11eb-936c-90862ce28ab3.png)
@@ -92,7 +92,7 @@ The key difference between these techniques is that Lasso shrinks the less impor
     ![image](https://user-images.githubusercontent.com/63558665/117914617-b45ecf80-b2b1-11eb-8248-343d3f13f2d2.png)
     
     MSE is used for linear regression and cross-entropy is used for classification problems
-# what is activation function? and the classification of activation function.
+## what is activation function? and the classification of activation function.
 An activation function in a neural network defines how the weighted sum of the input is transformed into an output from a node or nodes in a layer of the network
 * sigmoid used in logistic regression classification.The function takes any real value as input and outputs values in the range 0 to 1. The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to 0.0. sigmoid cause vanishing gradient, and the gradient will be zero when x is inf and -inf.
     ![image](https://user-images.githubusercontent.com/63558665/117915606-9b571e00-b2b3-11eb-8088-9833fa80ca75.png)
@@ -126,15 +126,15 @@ An activation function in a neural network defines how the weighted sum of the i
      ![image](https://user-images.githubusercontent.com/63558665/117917100-66989600-b2b6-11eb-956c-806cd1c85ff0.png)
      
      
-# Does global optimal can be reached by SGD, why？
+## Does global optimal can be reached by SGD, why？
 when the learning rates decrease with an appropriate rate, and subject to relatively mild assumptions, stochastic gradient descent converges almost surely to a global minimum when the objective function is convex or pseudoconvex, and otherwise converges almost surely to a local minimum
 
-# what is convex optimization and non-convex optimization?
+## what is convex optimization and non-convex optimization?
 * Non-convex: local minima and sensitive to initilization
 * convex: global minima
 
 
-# what vanishing/exploding gradient?
+## what vanishing/exploding gradient?
 
 If each term is (much) greater than 1 -->explosion of gradients
 If each term is (much) less than 1 -->vanishing gradients
@@ -171,7 +171,7 @@ solution for gradient vanishing:
       
       ![image](https://user-images.githubusercontent.com/63558665/117921786-56d17f80-b2bf-11eb-8c9b-930a6261fe5a.png)
 
-# why 1x1 convolution?
+## why 1x1 convolution?
 * The 1×1 filter can be used to create a linear projection of a stack of feature maps.
 * The projection created by a 1×1 can act like channel-wise pooling and be used for dimensionality reduction.
 * The projection created by a 1×1 can also be used directly or be used to increase the number of feature maps in a model.
