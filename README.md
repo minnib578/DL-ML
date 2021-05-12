@@ -84,12 +84,16 @@ An activation function in a neural network defines how the weighted sum of the i
 * sigmoid used in logistic regression classification.The function takes any real value as input and outputs values in the range 0 to 1. The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to 0.0.
     ![image](https://user-images.githubusercontent.com/63558665/117915606-9b571e00-b2b3-11eb-8088-9833fa80ca75.png)
 * Tanh: tanh is also like logistic sigmoid but better. The range of the tanh function is from (-1 to 1). tanh is also sigmoidal (s - shaped).The advantage is that The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to -1.0.
+
     ![image](https://user-images.githubusercontent.com/63558665/117915997-54b5f380-b2b4-11eb-8634-8374ed7a6fea.png)
 * ReLU: the ReLU is half rectified (from bottom). f(z) is zero when z is less than zero and f(z) is equal to z when z is above or equal to zero.The issue for ReLU is that all the negative values become zero immediately which decreases the ability of the model to fit or train from the data properly. That means any negative input given to the ReLU activation function turns the value into zero immediately in the graph, which in turns affects the resulting graph by not mapping the negative values appropriately.
+
      ![image](https://user-images.githubusercontent.com/63558665/117916165-99418f00-b2b4-11eb-84e1-7f389050b1ce.png)
 * Leaky ReLU:It is an attempt to solve the dying ReLU problem.The leak helps to increase the range of the ReLU function. Usually, the value of a is 0.01 or so.Therefore the range of the Leaky ReLU is (-infinity to infinity)
+
      ![image](https://user-images.githubusercontent.com/63558665/117916241-c42be300-b2b4-11eb-9c71-1424670f90fd.png)
 * softmax function outputs a vector of values that sum to 1.0 that can be interpreted as probabilities of class membership
+
      ![image](https://user-images.githubusercontent.com/63558665/117916946-2507eb00-b2b6-11eb-8344-0865360bdd61.png)
 
      The activation function used in hidden layers is typically chosen based on the type of neural network architecture.
