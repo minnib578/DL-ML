@@ -499,6 +499,7 @@ Transfer learning is an optimization, a shortcut to saving time or getting bette
 * Challenge: only limited target data, so be careful about overfitting
 
    ![image](https://user-images.githubusercontent.com/63558665/118047014-24b83000-b348-11eb-9dea-13313f4580c3.png)
+ 
  https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a
 
  
