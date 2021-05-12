@@ -67,21 +67,7 @@ chosing a learning rate:
     If stuck in local minimums, some noisy steps can lead the way out of them
     Average of the training samples produces stable error gradients and convergence
  
- 
- #### 5) what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
- * Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets.Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data. and then we need to simplefy the model by introducing the regularization L1 and L2
- * L1 regularization (Lasso regression) to force some coefficients to be exactly zero. This means some features are completely ignored by the model.If lambda is zero then we will get back OLS whereas very large value will make coefficients zero hence it will under-fit
- * L2 regularization (Ridge regression) adds “squared magnitude” of coefficient as penalty term to the loss function.if lambda is zero then you can imagine we get back OLS. However, If lambda is very large then it will add too much weight and it will lead to under-fitting.
-    
-    
-    ![image](https://user-images.githubusercontent.com/63558665/117913152-d2770080-b2ae-11eb-9f7a-d73ad0156754.png)
-
-
-    ![image](https://user-images.githubusercontent.com/63558665/117913034-9e9bdb00-b2ae-11eb-81f1-97763aa9163f.png)
-    
-The key difference between these techniques is that Lasso shrinks the less important feature’s coefficient to zero thus, removing some feature altogether. So, this works well for feature selection in case we have a huge number of features.
-
-#### 6)what is mean sqaured error, cross-entropy ? and what is the difference ?
+#### 5)what is mean sqaured error, cross-entropy ? and what is the difference ?
 * MSE measures the average of the squares of the errors
     
     ![image](https://user-images.githubusercontent.com/63558665/117914164-c3914d80-b2b0-11eb-936c-90862ce28ab3.png)
@@ -91,7 +77,7 @@ The key difference between these techniques is that Lasso shrinks the less impor
     
     MSE is used for linear regression and cross-entropy is used for classification problems
     
-#### 7) what is activation function? and the classification of activation function.
+#### 6) what is activation function? and the classification of activation function.
 An activation function in a neural network defines how the weighted sum of the input is transformed into an output from a node or nodes in a layer of the network
 * sigmoid used in logistic regression classification.The function takes any real value as input and outputs values in the range 0 to 1. The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to 0.0. sigmoid cause vanishing gradient, and the gradient will be zero when x is inf and -inf.
 
@@ -129,15 +115,15 @@ An activation function in a neural network defines how the weighted sum of the i
      ![image](https://user-images.githubusercontent.com/63558665/117917100-66989600-b2b6-11eb-956c-806cd1c85ff0.png)
      
      
-#### 8) Does global optimal can be reached by SGD, why？
+#### 7) Does global optimal can be reached by SGD, why？
 when the learning rates decrease with an appropriate rate, and subject to relatively mild assumptions, stochastic gradient descent converges almost surely to a global minimum when the objective function is convex or pseudoconvex, and otherwise converges almost surely to a local minimum
 
-### 9) what is convex optimization and non-convex optimization?
+#### 8) what is convex optimization and non-convex optimization?
 * Non-convex: local minima and sensitive to initilization
 * convex: global minima
 
 
-#### 10) what vanishing/exploding gradient?
+#### 9) what vanishing/exploding gradient?
 
 If each term is (much) greater than 1 -->explosion of gradients
 If each term is (much) less than 1 -->vanishing gradients
@@ -174,12 +160,121 @@ solution for gradient vanishing:
       
       ![image](https://user-images.githubusercontent.com/63558665/117921786-56d17f80-b2bf-11eb-8c9b-930a6261fe5a.png)
 
-#### 11) why 1x1 convolution?
+#### 10) why 1x1 convolution?
 * The 1×1 filter can be used to create a linear projection of a stack of feature maps.
 * The projection created by a 1×1 can act like channel-wise pooling and be used for dimensionality reduction.
 * The projection created by a 1×1 can also be used directly or be used to increase the number of feature maps in a model.
 
 # Regularization, Overfitting and Model/Feature Selection/Evaluation.
 
-#### 1)  What is regularization, why do we use it, and give some examples of common methods? 
+#### 1) what is regularization? what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
+ regularization is A technique that discourages learning a more complex or flexible model, so as to avoid the risk of overfitting.
+ Methods:
+ Ridge (L2 norm)
+ Lasso (L1 norm)
+ Dropout:In each forward pass, randomly set some neurons to zero Probability of dropping is a hyperparameter; 0.5 iscommon.
+ Batchnormalization:normalize so that each layer output has zero mean and unit variance
+ Data augmentation
+ early stop: train our model for an arbitrarily large number of epochs and plot the validation loss graph (e.g., using hold-out). Once the validation loss begins to degrade (e.g., stops decreasing but rather begins increasing), we stop the training and save the current model
+ 
+ * Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets.Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data. and then we need to simplefy the model by introducing the regularization L1 and L2
+ * L1 regularization (Lasso regression) to force some coefficients to be exactly zero. This means some features are completely ignored by the model.If lambda is zero then we will get back OLS whereas very large value will make coefficients zero hence it will under-fit
+ * L2 regularization (Ridge regression) adds “squared magnitude” of coefficient as penalty term to the loss function.if lambda is zero then you can imagine we get back OLS. However, If lambda is very large then it will add too much weight and it will lead to under-fitting.
+    
+    
+    ![image](https://user-images.githubusercontent.com/63558665/117913152-d2770080-b2ae-11eb-9f7a-d73ad0156754.png)
+
+
+    ![image](https://user-images.githubusercontent.com/63558665/117913034-9e9bdb00-b2ae-11eb-81f1-97763aa9163f.png)
+    
+The key difference between these techniques is that .
+The obvious disadvantage of ridge regression, is model interpretability. It will shrink the coefficients for least important predictors, very close to zero. But it will never make them exactly zero. In other words, the final model will include all predictors. However, in the case of the lasso, the L1 penalty has the effect of forcing some of the coefficient estimates to be exactly equal to zero . Therefore,Lasso shrinks the less important feature’s coefficient to zero,removing some feature altogether when the tuning parameter λ is sufficiently large. So, this works well for feature selection in case we have a huge number of features and is said to yield sparse models.
+
+#### 2) What is overfitting?
+overfitting representes a model learns the patterns of a training dataset too well, perfectly explaining the training data set but failing to generalize its predictive power to other sets of data.
+reasons:
+* imbalanced data
+* complexible model
+* training iteration (epochs)
+
+solutions:
+* cross-validation: validation approach, k-folder, LOOCV (data)
+* data augmentation(data)
+* feature selection(data)
+* regularization (learning algorithm)
+* ensembling: bagging and boosting
+
+Overfitting can be identified by checking validation metrics as accuracy and loss.The validation metrics usually increase until a point where they stagnate or start declining when the model is affected by overfitting.
+
+#### 3) what is data augmentation? and techniques used to augment data?
+Data augmentation are techniques used to increase the amount of data by adding slightly modified copies of already existing data or newly created synthetic data from existing data.
+Basic image process:
+* Flip horizontally and vertically
+* Rotation
+* Scale
+* Crop
+* Translation
+* kernel filters
+* Random erasing
+* Mixing images
+* Color space transfer: constrast and brightness
+
+Deep learning:
+* GANS
+* Adversarial training
+* Neural style transfer
+
+#### 4) what is imbalanced dataset? how to dela with that?
+An imbalanced dataset is one that has different proportions of target categories. For example, a dataset with medical images where we have to detect some illness will typically have many more negative samples than positive samples—say, 98% of images are without the illness and 2% of images are with the illness.
+There are different options to deal with imbalanced datasets:
+
+* resample the training set:
+    * under-sampling: reducing the size of the abundant class,used when quantity of data is sufficient.keeping all samples in the rare class and randomly selecting an equal number of samples in the abundant class, a balanced new dataset can be retrieved for further modelling.
+    * Over-sampling: increasing the size of rare samples. Rather than getting rid of abundant samples, new rare samples are generated by using e.g. repetition, bootstrapping or SMOTE (Synthetic Minority Over-Sampling Technique),used when the quantity of data is insufficient.
+
+* Data augmentation. We can add data in the less frequent categories by modifying existing data in a controlled way. In the example dataset, we could flip the images with illnesses, or add noise to copies of the images in such a way that the illness remains visible.
+
+* Using appropriate metrics. In the example dataset, if we had a model that always made negative predictions, it would achieve a precision of 98%. There are other metrics such as precision, recall, and F-score that describe the accuracy of the model better when using an imbalanced dataset.
+
+* clusterthe abundant class: clustering the abundant class in r groups, with r being the number of cases in r. For each group, only the medoid (centre of cluster) is kept. The model is then trained with the rare class and the medoids only
+
+* Design appropriate model that suited for imbalanced data and designing a cost function that is penalizing wrong classification of the rare class more than wrong classifications of the abundant class
+* 
+#### 5) what is F1 score,recall,precision and AUC?
+
+    ![image](https://user-images.githubusercontent.com/63558665/118019414-f7a75580-b326-11eb-958a-a4b7ccd613bd.png)
+
+* F1 score: The F1 score is the harmonic mean of the precision and recall
+
+   ![image](https://user-images.githubusercontent.com/63558665/118020136-bebbb080-b327-11eb-8eab-e1d752e23de2.png)
+
+* Accuracy:Accuracy is the quintessential classification metric (classification)
+   
+   ![image](https://user-images.githubusercontent.com/63558665/118019531-16a5e780-b327-11eb-958f-fe0864e73f41.png)
+   
+* Recall:how often the classifier predict yes when the actual value is yes : true positive/total actual positive
+
+   ![image](https://user-images.githubusercontent.com/63558665/118019959-98961080-b327-11eb-966b-abf409635f1f.png)
+
+* Presicion:when the classifier predict yes, how often is it correct
+    
+    ![image](https://user-images.githubusercontent.com/63558665/118019901-82885000-b327-11eb-80e1-4bb6237c9be6.png)
+ 
+ * AUC (Area under the ROC curve) is scale-invariant. It measures how well predictions are ranked, rather than their absolute values.
+The ROC curve is a graphical representation of the contrast between true positive rates and the false positive rate at various thresholds. It’s often used as a proxy for the trade-off between the sensitivity of the model (true positives) vs the fall-out or the probability it will trigger a false alarm (false positives)
+
+     ![image](https://user-images.githubusercontent.com/63558665/118021645-7604f700-b329-11eb-9581-f22317a88357.png)
      
+     ![image](https://user-images.githubusercontent.com/63558665/118021703-84531300-b329-11eb-867d-cf3773ec150b.png)
+     
+     ![image](https://user-images.githubusercontent.com/63558665/118022093-f62b5c80-b329-11eb-8eb3-4ab9945076b9.png)
+
+#### 6) What is the Bias-Variance Trade-off?
+Bias is the difference between the average prediction of our model and the correct value which we are trying to predict. 
+
+Variance is the variability of model prediction for a given data point or a value which tells us spread of our data.
+
+Model with high bias pays very little attention to the training data and oversimplifies the model. It always leads to high error on training and test data.Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before.
+
+The bias-variance tradeoff refers to a decomposition of the prediction error in machine learning as the sum of a bias and a variance term
+
