@@ -1,5 +1,5 @@
 # Linear Regression and Logistic Regression
-## What is linear regression? What is logistic regression? What is the difference?
+# What is linear regression? What is logistic regression? What is the difference?
 * Linear regression is used to predict the continuous dependent variable using a given set of independent variables, and it is used for solving Regression problem.In Linear regression, we predict the value of continuous variables. Least square estimation method is used for estimation of accuracy.
 example: House pricing
 
@@ -11,7 +11,7 @@ example: House pricing
 * Logistic Regression is used to predict the categorical dependent variable using a given set of independent variables, and it is used for solving classification problem.In logistic Regression, we predict the values of categorical variables.Maximum likelihood estimation method is used for estimation of accuracy.The output of Logistic Regression problem can be only between the 0 and 1.In logistic regression, we pass the weighted sum of inputs through an activation function that can map values in between 0 and 1. Such activation function is known as sigmoid function and the curve obtained is called as sigmoid curve.
 example:credit card default
 
-## what is gradient descent?
+# what is gradient descent?
 Gradient descent is an optimization algorithm that's used when training a machine learning model. It's based on a convex function and tweaks its parameters iteratively to   minimize a given function to its local minimum.Gradient descent is a convex function.
 
 how does gradient descent work?
@@ -19,7 +19,7 @@ The equation below describes what gradient descent does: b is the next position 
     ![image](https://user-images.githubusercontent.com/63558665/117905892-e9632600-b2a1-11eb-9a4d-6a7eb210113c.png)
 
 So this formula basically tells us the next position we need to go, which is the direction of the steepest descent
-## how to choose the learning rate? and how to choose learning rate
+# how to choose the learning rate? and how to choose learning rate
 For gradient descent to reach the local minimum we must set the learning rate to an appropriate value, which is neither too low nor too high. This is important because if the steps it takes are too big, it may not reach the local minimum because it bounces back and forth between the convex function of gradient descent (see left image below). If we set the learning rate to a very small value, gradient descent will eventually reach the local minimum but that may take a while(see right image).
    ![image](https://user-images.githubusercontent.com/63558665/117906321-ace3fa00-b2a2-11eb-9767-71d24d1923c2.png)
 if the learning rate is up and down interatively, it may be caused by high learning rate.
@@ -28,7 +28,7 @@ chosing a learning rate:
 * Try multiple choise,crude rule of thumb: update changes weight about 01-1%
 * Linesearch: keep walking in the same direction as long as 𝑓 is still decreasing
 
-## what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
+# what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
 1. batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
      
      ![image](https://user-images.githubusercontent.com/63558665/117908665-d2730280-b2a6-11eb-8265-935f26e9e2d8.png)
@@ -58,10 +58,10 @@ chosing a learning rate:
     Benefit from vectorization
     If stuck in local minimums, some noisy steps can lead the way out of them
     Average of the training samples produces stable error gradients and convergence
- ## what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
+ # what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
  * Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets.Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data. and then we need to simplefy the model by introducing the regularization L1 and L2
- * L1 regularization to force some coefficients to be exactly zero. This means some features are completely ignored by the model.if lambda is zero then we will get back OLS whereas very large value will make coefficients zero hence it will under-fit
- * L2 regularization adds “squared magnitude” of coefficient as penalty term to the loss function.if lambda is zero then you can imagine we get back OLS. However, if lambda is very large then it will add too much weight and it will lead to under-fitting.
+ * L1 regularization to force some coefficients to be exactly zero. This means some features are completely ignored by the model.If lambda is zero then we will get back OLS whereas very large value will make coefficients zero hence it will under-fit
+ * L2 regularization adds “squared magnitude” of coefficient as penalty term to the loss function.if lambda is zero then you can imagine we get back OLS. However, If lambda is very large then it will add too much weight and it will lead to under-fitting.
     
     
     ![image](https://user-images.githubusercontent.com/63558665/117913152-d2770080-b2ae-11eb-9f7a-d73ad0156754.png)
