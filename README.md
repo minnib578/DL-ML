@@ -34,12 +34,12 @@ chosing a learning rate:
 advantage:computational efficient,it produces a stable error gradient and a stable convergence,Less oscillations and noisy steps taken towards the global minima of the loss function due to updating the parameters by computing the average of all the training samples rather than the value of a single sample
 disadvantage:stable error gradient can lead to a local minimum.The entire training set can be too large to process in the memory due to which additional memory might be needed. Depending on computer resources it can take too long for processing all the training samples as a batch
 * stochastic gradient descent: one training sample (example) is passed through the neural network at a time and the parameters (weights) of each layer are updated with the computed gradient
- advantage:
+*[advantage]:
     It is easier to fit into memory due to a single training sample being processed by the network
     It is computationally fast as only one sample is processed at a time
     For larger datasets it can converge faster as it causes updates to the parameters more frequently
     Due to frequent updates the steps taken towards the minima of the loss function have oscillations which can help getting out of local minimums of the loss function
- disadvantage:
+ *[disadvantage]:
     The minima is very noisy caused by frequent update the step taken towards
     It may take longer to achieve convergence to the minima of loss function
     Frequent update causes computation expensive due to using all resources for processing one training sample at a time
