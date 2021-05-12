@@ -97,7 +97,7 @@ An activation function in a neural network defines how the weighted sum of the i
      * avoid the dying ReLU
      * high computation cost
 
-      ![image](https://user-images.githubusercontent.com/63558665/117920827-9e570c00-b2bd-11eb-8ab2-0918a2596b3e.png)
+     ![image](https://user-images.githubusercontent.com/63558665/117920827-9e570c00-b2bd-11eb-8ab2-0918a2596b3e.png)
 
 * Leaky ReLU:It is an attempt to solve the dying ReLU problem.The leak helps to increase the range of the ReLU function. Usually, the value of a is 0.01 or so.Therefore the range of the Leaky ReLU is (-infinity to infinity)
 
@@ -139,15 +139,15 @@ solution for gradient vanishing:
       * after Fully  Connected or Convolutional layers,  and before nonlinearity!
       * batch normalization for fully-connected network-->layer normalization
       
-      ![image](https://user-images.githubusercontent.com/63558665/117922902-2f7bb200-b2c1-11eb-8c75-32717ca566f1.png)
+     ![image](https://user-images.githubusercontent.com/63558665/117922902-2f7bb200-b2c1-11eb-8c75-32717ca566f1.png)
 
-      * why batch normalize?
+     * why batch normalize?
             Improves gradient flow through  the network
             Allows higher learning rates
             Reduces the strong dependence  on initialization
             Acts as a form of regularization  in a funny way, and slightly  reduces the need for dropout
       
-      ![image](https://user-images.githubusercontent.com/63558665/117922474-86cd5280-b2c0-11eb-8c58-5cbe6d707002.png)
+     ![image](https://user-images.githubusercontent.com/63558665/117922474-86cd5280-b2c0-11eb-8c58-5cbe6d707002.png)
 
  
 * Residual connections:allow gradients to flow unimpeded, instead of single layers, have residual connections over block
@@ -155,10 +155,10 @@ solution for gradient vanishing:
       * increase channel by 1x1 convolution
       * decrease spatial resoution by subsampling
       
-      ![image](https://user-images.githubusercontent.com/63558665/117920511-f80b0680-b2bc-11eb-9ea0-bd53a72c971c.png)
+     ![image](https://user-images.githubusercontent.com/63558665/117920511-f80b0680-b2bc-11eb-9ea0-bd53a72c971c.png)
 * bottleneck blocks:use 1x1 to project to lower dimensionality do convolution, then come back-->avoid that when channels increases, 3x3 convolutions introduce many parameters.
       
-      ![image](https://user-images.githubusercontent.com/63558665/117921786-56d17f80-b2bf-11eb-8c9b-930a6261fe5a.png)
+     ![image](https://user-images.githubusercontent.com/63558665/117921786-56d17f80-b2bf-11eb-8c9b-930a6261fe5a.png)
 
 #### 10) why 1x1 convolution?
 * The 1×1 filter can be used to create a linear projection of a stack of feature maps.
@@ -242,7 +242,7 @@ There are different options to deal with imbalanced datasets:
 * 
 #### 5) what is F1 score,recall,precision and AUC?
 
-    ![image](https://user-images.githubusercontent.com/63558665/118019414-f7a75580-b326-11eb-958a-a4b7ccd613bd.png)
+   ![image](https://user-images.githubusercontent.com/63558665/118019414-f7a75580-b326-11eb-958a-a4b7ccd613bd.png)
 
 * F1 score: The F1 score is the harmonic mean of the precision and recall
 
@@ -263,11 +263,11 @@ There are different options to deal with imbalanced datasets:
  * AUC (Area under the ROC curve) is scale-invariant. It measures how well predictions are ranked, rather than their absolute values.
 The ROC curve is a graphical representation of the contrast between true positive rates and the false positive rate at various thresholds. It’s often used as a proxy for the trade-off between the sensitivity of the model (true positives) vs the fall-out or the probability it will trigger a false alarm (false positives)
 
-     ![image](https://user-images.githubusercontent.com/63558665/118021645-7604f700-b329-11eb-9581-f22317a88357.png)
+   ![image](https://user-images.githubusercontent.com/63558665/118021645-7604f700-b329-11eb-9581-f22317a88357.png)
      
-     ![image](https://user-images.githubusercontent.com/63558665/118021703-84531300-b329-11eb-867d-cf3773ec150b.png)
+   ![image](https://user-images.githubusercontent.com/63558665/118021703-84531300-b329-11eb-867d-cf3773ec150b.png)
      
-     ![image](https://user-images.githubusercontent.com/63558665/118022093-f62b5c80-b329-11eb-8eb3-4ab9945076b9.png)
+   ![image](https://user-images.githubusercontent.com/63558665/118022093-f62b5c80-b329-11eb-8eb3-4ab9945076b9.png)
 
 #### 6) What is the Bias-Variance Trade-off?
 Bias is the difference between the average prediction of our model and the correct value which we are trying to predict. 
