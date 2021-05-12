@@ -21,6 +21,18 @@ The equation below describes what gradient descent does: b is the next position 
     ![image](https://user-images.githubusercontent.com/63558665/117905892-e9632600-b2a1-11eb-9a4d-6a7eb210113c.png)
 
 So this formula basically tells us the next position we need to go, which is the direction of the steepest descent
+challenges:
+* Converge to local minimum can sometimes be quite slow
+* If there are multiple local minima in the error surface, there is no guarantee that the procedure will find the global minimum
+* Performance depends on the shape of the error surface. Too many valleys/wells will make it easy to be trapped in local minima
+solutions:
+* Try nets with different # of hidden layers and hidden nodes (they may lead to different error surfaces, some might be better than others)
+* Try different initial weights (different starting points on the surface)
+* Forced escape from local minima by random perturbation (e.g., simulated annealing)
+* adding momentum term
+* batch mode of weight update
+* variations of learning rate
+* adaptive learning rate
 
 
 #### 3) how to choose the learning rate? and how to choose learning rate
@@ -160,10 +172,7 @@ solution for gradient vanishing:
       
      ![image](https://user-images.githubusercontent.com/63558665/117921786-56d17f80-b2bf-11eb-8c9b-930a6261fe5a.png)
 
-#### 10) why 1x1 convolution?
-* The 1×1 filter can be used to create a linear projection of a stack of feature maps.
-* The projection created by a 1×1 can act like channel-wise pooling and be used for dimensionality reduction.
-* The projection created by a 1×1 can also be used directly or be used to increase the number of feature maps in a model.
+
 
 # Regularization, Overfitting and Model/Feature Selection/Evaluation.
 
@@ -301,4 +310,101 @@ k-fold cross-validation bias can be minimized with k=n (loocv), but this estimat
 
 k-fold: high bias with less variance
 loocv: less bias with high variance
+
+# Deep learning
+#### 1) what is perceptron?
+The perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+
+  ![image](https://user-images.githubusercontent.com/63558665/118027887-6e951c00-b330-11eb-871c-2deb5ce88451.png)
+
+If the training data is linear separate and small learning rate, we can get the weight from the set of sample pattern and perceptron learning will converge
+Training rule:
+* Start with a randomly chosen weight vector w0
+* While some input vectors remain misclassified update weight based on error
+* stop until all samples correctly classified
+
+#### 2) what is backpropagation?
+backpropagation learning: Propagating errors at output nodes down to hidden nodes, these computed errors on hidden nodes drives the update of weights
+
+#### 3) what is cnn? why cnn for image? what is pooling?
+* CNN is a convolutional neural network (CNN, or ConvNet) is a class of deep neural network, most commonly applied to analyze visual imagery
+   
+   ![image](https://user-images.githubusercontent.com/63558665/118033750-2d543a80-b337-11eb-89ec-b237e486f48c.png)
+
+* Why cnn for image?
+    * Some patterns are much smaller than the whole image
+    * The same patterns appear in different regions
+    * Subsampling the pixels will not change the object
+    * Filters to capture different patterns in the input space 
+    * genrating different feature maps with using different kernels
+    * each filter detects a small patter
+* pooling: is a layer that used to reduce the dimensions of the feature maps. Thus, it reduces the number of parameters to learn and the amount of computation performed in the networ
+     * Max pooling:is a pooling operation that selects the maximum element from the region of the feature map covered by the filter
+     * Average pooling:computes the average of the elements present in the region of feature map covered by the filter
+     * global pooling:reduces each channel in the feature map to a single value
+     
+#### 4) what is momentum, weight decay,learning rate decay?
+#### 5) why 1x1 convolution?
+The number of feature maps often increases with the depth of the network, so we can use the 1x1 convolution, which also named channel-wise pooling,to downsample feature maps
+* The 1×1 filter can be used to create a linear projection of a stack of feature maps.
+* The projection created by a 1×1 can act like channel-wise pooling and be used for dimensionality reduction.
+* The projection created by a 1×1 can also be used directly or be used to increase the number of feature maps in a model.
+
+#### 6) What is Batch Normalization and Layer Normalization?
+In batch normalization, input values of the same neuron for all the data in the mini-batch are normalized. Whereas in layer normalization, input values for all neurons in the same layer are normalized for each data sample.
+
+Training Deep Neural Networks is complicated by the fact that the distribution of each layer's inputs changes during training, as the parameters of the previous layers change. The idea is then to normalize the inputs of each layer in such a way that they have a mean output activation of zero and standard deviation of one. This is done for each individual mini-batch at each layer i.e compute the mean and variance of that mini-batch alone, then normalize. This is analogous to how the inputs to networks are standardized. How does this help? We know that normalizing the inputs to a network helps it learn. But a network is just a series of layers, where the output of one layer becomes the input to the next. That means we can think of any layer in a neural network as the first layer of a smaller subsequent network. Thought of as a series of neural networks feeding into each other, we normalize the output of one layer before applying the activation function, and then feed it into the following layer (sub-network).
+
+#### 7) Why would you use many small convolutional kernels such as 3x3 rather than a few large ones? [src]
+This is very well explained in the VGGNet paper. There are 2 reasons: First, you can use several smaller kernels rather than few large ones to get the same receptive field and capture more spatial context, but with the smaller kernels you are using less parameters and computations. Secondly, because with smaller kernels you will be using more filters, you'll be able to use more activation functions and thus have a more discriminative mapping function being learned by your CNN.
+
+#### 8) What is Dropout? and why?
+Dropout is randomly set some neurons to zero Probability of dropping is a hyperparameter in each forward pass,  0.5 iscommon.
+why? --> prevent overfitting
+If your deep neural net is significantly overfitting, dropout will usually reduce the number of errors by a lot.
+
+#### 9) Techniques used to initialize the weight?
+Weight initialization is a procedure to set the weights of a neural network to small random values that define the starting point for the optimization (learning or training) of the neural network model.
+
+Each time, a neural network is initialized with a different set of weights, resulting in a different starting point for the optimization process, and potentially resulting in a different final set of weights with different performance characteristics.
+* Zeros: Initializer that generates tensors initialized to 0.
+* Ones: Initializer that generates tensors initialized to 1.
+* Constant: Initializer that generates tensors initialized to a constant value.
+* RandomNormal: Initializer that generates tensors with a normal distribution.
+* RandomUniform: Initializer that generates tensors with a uniform distribution.
+* TruncatedNormal: Initializer that generates a truncated normal distribution.
+* VarianceScaling: Initializer capable of adapting its scale to the shape of weights.
+* Orthogonal: Initializer that generates a random orthogonal matrix.
+* Identity: Initializer that generates the identity matrix.
+* lecun_uniform: LeCun uniform initializer.
+* glorot_normal: Glorot normal initializer, also called Xavier normal initializer.
+* glorot_uniform: Glorot uniform initializer, also called Xavier uniform initializer.
+* he_normal: He normal initializer.
+* lecun_normal: LeCun normal initializer.
+* he_uniform: He uniform variance scaling initializer.
+
+* why not zero weight initilization? 
+If all the weights are initialized to zeros, the derivatives will remain same for every w in W[l]. As a result, neurons will learn same features in each iterations. This problem is known as network failing to break symmetry. And not only zero, any constant initialization will produce a poor result.
+
+* why randnom weight initialization?
+ In this method, the weights are initialized very close to zero, but randomly. This helps in breaking symmetry when backprogragating and every neuron is no longer performing the same computation.
+ 
+ #### 8) optimizer
+* Gradient Descent:
+   * Batch gradient descent
+       * Advantages:
+               Easy computation.
+               Easy to implement.
+               Easy to understand.
+       * Disadvantages:
+               May trap at local minima.
+               Weights are changed after calculating gradient on the whole dataset. So, if the dataset is too large than this may take years to converge to the minima.
+               Requires large memory to calculate gradient on the whole dataset.
+   * Stochastic gradient descent
+   * Mini-batch gradient descent
+* Adaptive:
+   * Adagrad
+   * Adadelta
+   * RMSprop
+   * Adam
 
