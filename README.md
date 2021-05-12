@@ -281,8 +281,8 @@ The bias-variance tradeoff refers to a decomposition of the prediction error in 
 #### 7) What is cross validation?
 Cross Validation is a very useful technique for assessing the effectiveness of your model, particularly in cases where you need to mitigate overfitting. It is also of use in determining the hyper parameters of your model, in the sense that which parameters will result in lowest test error.
 * 	Validation set approach: randomly divide the available set of observation into training set and validation set. And fit the model on the training set and compute the validation set error as an estimate of the test error rate.
-   * Ad: conceptually simple and easy to implement
-   * Disad: The validation estimates the test error rate is highly variable depending on which observation in the training set and which observations in validation set. Only a subset of the observation used to fit the model (less training data). With smaller observation, the validation set error rate may be tended to overestimate the test error rate for the model fit on the entire dataset.
+    * Ad: conceptually simple and easy to implement
+    * Disad: The validation estimates the test error rate is highly variable depending on which observation in the training set and which observations in validation set. Only a subset of the observation used to fit the model (less training data). With smaller observation, the validation set error rate may be tended to overestimate the test error rate for the model fit on the entire dataset.
    
 * Loocv: leave -one-out-cross validation
 Leave out one observation for the validation set and use the remaining n - 1 observations as the training set. Fit the model on training set and make a prediction for the excluded observation and calculate the error rate. Repeat for n time, and each time choose a different observation for the validation set. And the test error rate is the average of these n test error estimation.
