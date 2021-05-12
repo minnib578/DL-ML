@@ -18,7 +18,7 @@ Gradient descent is an optimization algorithm that's used when training a machin
 how does gradient descent work?
 The equation below describes what gradient descent does: b is the next position of our climber, while a represents his current position. The minus sign refers to the minimization part of gradient descent. The gamma in the middle is a waiting factor(stepsize) and the gradient term ( Δf(a) ) is simply the direction of the steepest descent.
 
-    ![image](https://user-images.githubusercontent.com/63558665/117905892-e9632600-b2a1-11eb-9a4d-6a7eb210113c.png)
+   ![image](https://user-images.githubusercontent.com/63558665/117905892-e9632600-b2a1-11eb-9a4d-6a7eb210113c.png)
 
 So this formula basically tells us the next position we need to go, which is the direction of the steepest descent
 challenges:
