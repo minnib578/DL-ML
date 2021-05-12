@@ -59,10 +59,18 @@ chosing a learning rate:
     If stuck in local minimums, some noisy steps can lead the way out of them
     Average of the training samples produces stable error gradients and convergence
  ## what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
-    -Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets
-    Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data.
+ * Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets.Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data. and then we need to simplefy the model by introducing the regularization L1 and L2
+ * L1 regularization to force some coefficients to be exactly zero. This means some features are completely ignored by the model.if lambda is zero then we will get back OLS whereas very large value will make coefficients zero hence it will under-fit
+ * L2 regularization adds “squared magnitude” of coefficient as penalty term to the loss function.if lambda is zero then you can imagine we get back OLS. However, if lambda is very large then it will add too much weight and it will lead to under-fitting.
+    
+    
+    ![image](https://user-images.githubusercontent.com/63558665/117913152-d2770080-b2ae-11eb-9f7a-d73ad0156754.png)
 
- 
+
+    ![image](https://user-images.githubusercontent.com/63558665/117913034-9e9bdb00-b2ae-11eb-81f1-97763aa9163f.png)
+    
+The key difference between these techniques is that Lasso shrinks the less important feature’s coefficient to zero thus, removing some feature altogether. So, this works well for feature selection in case we have a huge number of features.
+
  
  
 
