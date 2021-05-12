@@ -58,6 +58,9 @@ chosing a learning rate:
     Benefit from vectorization
     If stuck in local minimums, some noisy steps can lead the way out of them
     Average of the training samples produces stable error gradients and convergence
+ ## what is L1 and L2 regularization? what is the difference between L1 ,L2 and Linear regression?
+    -Linear regression finds the parameters to minimize the mean squared error or residuals between the predictions and the targets
+    Overfitting occurs when the model makes much better predictions on known data than on unknown data. The model begins to memorize the training data and is unable to generalize to unseen test data.
 
  
  
