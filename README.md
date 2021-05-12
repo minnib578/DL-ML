@@ -17,6 +17,7 @@ Gradient descent is an optimization algorithm that's used when training a machin
 how does gradient descent work?
 The equation below describes what gradient descent does: b is the next position of our climber, while a represents his current position. The minus sign refers to the minimization part of gradient descent. The gamma in the middle is a waiting factor(stepsize) and the gradient term ( Δf(a) ) is simply the direction of the steepest descent.
     ![image](https://user-images.githubusercontent.com/63558665/117905892-e9632600-b2a1-11eb-9a4d-6a7eb210113c.png)
+
 So this formula basically tells us the next position we need to go, which is the direction of the steepest descent
 3. how to choose the learning rate? and how to choose learning rate
 For gradient descent to reach the local minimum we must set the learning rate to an appropriate value, which is neither too low nor too high. This is important because if the steps it takes are too big, it may not reach the local minimum because it bounces back and forth between the convex function of gradient descent (see left image below). If we set the learning rate to a very small value, gradient descent will eventually reach the local minimum but that may take a while(see right image).
@@ -28,10 +29,10 @@ chosing a learning rate:
 * Linesearch: keep walking in the same direction as long as 𝑓 is still decreasing
 
 4. what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
-   batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
+   * batch gradient descent calculates the error for each example within the training dataset, but only after all training examples have been evaluated does the model get updated
      ![image](https://user-images.githubusercontent.com/63558665/117908665-d2730280-b2a6-11eb-8265-935f26e9e2d8.png)
-   * advantage:computational efficient,it produces a stable error gradient and a stable convergence,Less oscillations and noisy steps taken towards the global minima of the loss function due to updating the parameters by computing the average of all the training samples rather than the value of a single sample
-   * disadvantage:stable error gradient can lead to a local minimum.The entire training set can be too large to process in the memory due to which additional memory might be needed. Depending on computer resources it can take too long for processing all the training samples as a batch
+   ** advantage:computational efficient,it produces a stable error gradient and a stable convergence,Less oscillations and noisy steps taken towards the global minima of the loss function due to updating the parameters by computing the average of all the training samples rather than the value of a single sample
+   ** disadvantage:stable error gradient can lead to a local minimum.The entire training set can be too large to process in the memory due to which additional memory might be needed. Depending on computer resources it can take too long for processing all the training samples as a batch
    stochastic gradient descent: one training sample (example) is passed through the neural network at a time and the parameters (weights) of each layer are updated with the computed gradient
  * advantage:
     It is easier to fit into memory due to a single training sample being processed by the network
