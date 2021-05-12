@@ -77,6 +77,7 @@ The key difference between these techniques is that Lasso shrinks the less impor
 * Cross-entropy is a measure of the difference between two probability distributions for a given random variable or set of events.
     
     ![image](https://user-images.githubusercontent.com/63558665/117914617-b45ecf80-b2b1-11eb-8248-343d3f13f2d2.png)
+    
     MSE is used for linear regression and cross-entropy is used for classification problems
 
  
