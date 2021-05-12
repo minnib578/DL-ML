@@ -278,3 +278,27 @@ Model with high bias pays very little attention to the training data and oversim
 
 The bias-variance tradeoff refers to a decomposition of the prediction error in machine learning as the sum of a bias and a variance term
 
+#### 7) What is cross validation?
+Cross Validation is a very useful technique for assessing the effectiveness of your model, particularly in cases where you need to mitigate overfitting. It is also of use in determining the hyper parameters of your model, in the sense that which parameters will result in lowest test error.
+* 	Validation set approach: randomly divide the available set of observation into training set and validation set. And fit the model on the training set and compute the validation set error as an estimate of the test error rate.
+   * Ad: conceptually simple and easy to implement
+   * Disad: The validation estimates the test error rate is highly variable depending on which observation in the training set and which observations in validation set. Only a subset of the observation used to fit the model (less training data). With smaller observation, the validation set error rate may be tended to overestimate the test error rate for the model fit on the entire dataset.
+   
+* Loocv: leave -one-out-cross validation
+Leave out one observation for the validation set and use the remaining n - 1 observations as the training set. Fit the model on training set and make a prediction for the excluded observation and calculate the error rate. Repeat for n time, and each time choose a different observation for the validation set. And the test error rate is the average of these n test error estimation.
+   * Ad:
+         Less bias than the validation set because we repeatedly fit the model with n-1 observation.
+         Not overestimate the test error rate as the validation set approach.
+         Performing multiple times will yield the same results since there is no randomly split the training set and validation set
+   * Disad:Computation expensive since the model has to fit n times with larger training data.
+
+* K-fold CV:
+Randomly divide the set of observations into k groups, or folds, of approximately equal size.
+Treat the first fold as validation set and fit the model with remaing k-1 folder, calculate the error rate from the prediction for the validation set. Repeat the produce k time , each time using a different fold as validation set, and the k-fold estimate the test error rate is the average of these k test error rate etimates.
+k-fold cross-validation bias can be minimized with k=n (loocv), but this estimate has high variance,k=5/10 will have good bias-variance trade-off
+   * ad: less computation than LOOCV and lower variance than LOOCV
+   * disad: bias upward
+
+k-fold: high bias with less variance
+loocv: less bias with high variance
+
