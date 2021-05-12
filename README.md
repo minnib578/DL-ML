@@ -81,7 +81,7 @@ The key difference between these techniques is that Lasso shrinks the less impor
     MSE is used for linear regression and cross-entropy is used for classification problems
 # what is activation function? and the classification of activation function.
 An activation function in a neural network defines how the weighted sum of the input is transformed into an output from a node or nodes in a layer of the network
-* sigmoid used in logistic regression classification.The function takes any real value as input and outputs values in the range 0 to 1. The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to 0.0.
+* sigmoid used in logistic regression classification.The function takes any real value as input and outputs values in the range 0 to 1. The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to 0.0. sigmoid cause vanishing gradient, and the gradient will be zero when x is inf and -inf.
     ![image](https://user-images.githubusercontent.com/63558665/117915606-9b571e00-b2b3-11eb-8088-9833fa80ca75.png)
 * Tanh: tanh is also like logistic sigmoid but better. The range of the tanh function is from (-1 to 1). tanh is also sigmoidal (s - shaped).The advantage is that The larger the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to -1.0.
 
