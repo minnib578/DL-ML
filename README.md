@@ -72,10 +72,12 @@ chosing a learning rate:
 The key difference between these techniques is that Lasso shrinks the less important feature’s coefficient to zero thus, removing some feature altogether. So, this works well for feature selection in case we have a huge number of features.
 # what is mean sqaured error, cross-entropy ? and what is the difference ?
 * MSE measures the average of the squares of the errors
+    
     ![image](https://user-images.githubusercontent.com/63558665/117914164-c3914d80-b2b0-11eb-936c-90862ce28ab3.png)
 * Cross-entropy is a measure of the difference between two probability distributions for a given random variable or set of events.
+    
     ![image](https://user-images.githubusercontent.com/63558665/117914617-b45ecf80-b2b1-11eb-8248-343d3f13f2d2.png)
-MSE is used for linear regression and cross-entropy is used for classification problems
+    MSE is used for linear regression and cross-entropy is used for classification problems
 
  
  
