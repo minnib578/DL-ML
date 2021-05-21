@@ -532,20 +532,20 @@ Firstly, convolutions preserve, encode, and actually use the spatial information
 #### 17) Why is ReLU better and more often used than Sigmoid in Neural Networks? [src]
 Imagine a network with random initialized weights ( or normalised ) and almost 50% of the network yields 0 activation because of the characteristic of ReLu ( output 0 for negative values of x ). This means a fewer neurons are firing ( sparse activation ) and the network is lighter.
 
-####18)  What is "One Hot Encoding"? Why and when do you have to use it?
+#### 18)  What is "One Hot Encoding"? Why and when do you have to use it?
 One Hot encoding converts categorical data into an integer representation.
 * Categorical data is defined as variables with a finite set of label values.
 * Most machine learning algorithms require numerical input and output variables.
 * An integer and one hot encoding is used to convert categorical data to integer data.
 
-####19) How Will You Know Which Machine Learning Algorithm to Choose for Your Classification Problem?
+#### 19) How Will You Know Which Machine Learning Algorithm to Choose for Your Classification Problem?
 While there is no fixed rule to choose an algorithm for a classification problem, you can follow these guidelines:
 
 * If accuracy is a concern, test different algorithms and cross-validate them
 * If the training dataset is small, use models that have low variance and high bias
 * If the training dataset is large, use models that have high variance and little bias
 
-####20) Advantages and disadvantages of Principal Component Analysis in Machine Learning?
+#### 20) Advantages and disadvantages of Principal Component Analysis in Machine Learning?
 Principal Component Analysis (PCA) is a statistical techniques used to reduce the dimensionality of the data (reduce the number of features in the dataset) by selecting the most important features that capture maximum information about the dataset. Advantages of Principal Component Analysis
 * Removes Correlated Features.
 * Improves Algorithm Performance.
@@ -556,8 +556,47 @@ Disadvantages of Principal Component Analysis
 * Data standardization is must before PCA: You must standardize your data before implementing PCA, otherwise PCA will not be able to find the optimal Principal Components. Use StandardScaler from Scikit Learn to standardize the dataset features onto unit scale (mean = 0 and standard deviation = 1) which is a requirement for the optimal performance of many Machine Learning algorithms.
 * Information Loss: Although Principal Components try to cover maximum variance among the features in a dataset, if we don't select the number of Principal Components with care, it may miss some information as compared to the original list of features.
 
+
+#### 21) What are the main differences between K-means and K-nearest neighbours?
+K-means is a clustering algorithm that tries to partition a set of points into K sets (clusters) such that the points in each cluster tend to be near each other. It is unsupervised because the points have no external classification.
+
+KNN is a classification (or regression) algorithm that in order to determine the classification of a point, combines the classification of the K nearest points. It is supervised because you are trying to classify a point based on the known classification of other points.
+
+* Question: What is the difference between K-means and KNN?¶
+K-NN is a Supervised machine learning while K-means is an unsupervised machine learning.
+K-NN is a classification or regression machine learning algorithm while K-means is a clustering machine learning algorithm.
+K-NN is a lazy learner while K-Means is an eager learner. An eager learner has a model fitting that means a training step but a lazy learner does not have a training phase.
+K-NN performs much better if all of the data have the same scale but this is not true for K-means.
+* Question: How to optimize the result of K means?
+visualize your data and the clustering results (PCA, so you see the outliers).
+Start with a smaller sample. Sample them at random and test multiple starting points.
+Use other clustering algorithms than k-means.
+
+
+#### 22) What is support vector machine (SVM)?
+SVM stands for support vector machine, it is a supervised machine learning algorithm which can be used for both Regression and Classification. If you have n features in your training data set, SVM tries to plot it in n-dimensional space with the value of each feature being the value of a particular coordinate. SVM uses hyper planes to separate out different classes based on the provided kernel function. The SVM finds the maximum margin separating hyperplane.
+
+* Question: What is the best separating hyperplane?¶
+The one that maximizes the distance to the closest data points from both classes. We say it is the hyperplane with maximum margin.
+
+* Question: What are margin, support vectors in SVM?
+Maximum margin: the maximum distance between data points of both classes. Support vectors are data points that are closer to the hyperplane and influence the position and orientation of the hyperplane. Using these support vectors, we maximize the margin of the classifier.
+
+* Question: What are the different kernels functions in SVM ?
+The function of kernel is to take data as input and transform it into the required form. For example linear, nonlinear, polynomial, radial basis function (RBF), and sigmoid. The kernel functions return the inner product between two points in a suitable feature space.
+
+* Question: Hard and soft margin Support Vector Machine (SVM)?
+Soft margin is extended version of hard margin SVM.
+Hard margin SVM can work only when data is completely linearly separable without any errors (noise or outliers). In case of errors either the margin is smaller or hard margin SVM fails. On the other hand soft margin SVM was proposed by Vapnik to solve this problem by introducing slack variables.
+As for as their usage is concerned since Soft margin is extended version of hard margin SVM so we use Soft margin SVM.
+* Question: What is the difference between SVM and logistic regression?
+In the case of two classes are linearly separable. LR finds any solution that separates the two classes. Hard SVM finds "the" solution among all possible ones that has the maximum margin. In case of soft SVM and the classes not being linearly separable. LR finds a hyperplane that corresponds to the minimization of some error. Soft SVM tries to minimize the error (another error) and at the same time trades off that error with the margin via a regularization parameter. SVM is a hard classifier but LR is a probabilistic one.
+
+
+
 # Other
 ## Segmentation: https://nanonets.com/blog/semantic-image-segmentation-2020/
  ## Reference
  * https://github.com/AllenCX/DS-ML-Interview-Questions
  * https://github.com/andrewekhalel/MLQuestions
+ * https://yanjin.space/blog/2020/2020305.html
