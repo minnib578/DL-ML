@@ -532,6 +532,29 @@ Firstly, convolutions preserve, encode, and actually use the spatial information
 #### 17) Why is ReLU better and more often used than Sigmoid in Neural Networks? [src]
 Imagine a network with random initialized weights ( or normalised ) and almost 50% of the network yields 0 activation because of the characteristic of ReLu ( output 0 for negative values of x ). This means a fewer neurons are firing ( sparse activation ) and the network is lighter.
 
+####18)  What is "One Hot Encoding"? Why and when do you have to use it?
+One Hot encoding converts categorical data into an integer representation.
+* Categorical data is defined as variables with a finite set of label values.
+* Most machine learning algorithms require numerical input and output variables.
+* An integer and one hot encoding is used to convert categorical data to integer data.
+
+####19) How Will You Know Which Machine Learning Algorithm to Choose for Your Classification Problem?
+While there is no fixed rule to choose an algorithm for a classification problem, you can follow these guidelines:
+
+* If accuracy is a concern, test different algorithms and cross-validate them
+* If the training dataset is small, use models that have low variance and high bias
+* If the training dataset is large, use models that have high variance and little bias
+
+####20) Advantages and disadvantages of Principal Component Analysis in Machine Learning?
+Principal Component Analysis (PCA) is a statistical techniques used to reduce the dimensionality of the data (reduce the number of features in the dataset) by selecting the most important features that capture maximum information about the dataset. Advantages of Principal Component Analysis
+* Removes Correlated Features.
+* Improves Algorithm Performance.
+* Reduces Overfitting.
+* Improves Visualization.
+Disadvantages of Principal Component Analysis
+* Independent variables become less interpretable: After implementing PCA on the dataset, your original features will turn into Principal Components. Principal Components are the linear combination of your original features. Principal Components are not as readable and interpretable as original features.
+* Data standardization is must before PCA: You must standardize your data before implementing PCA, otherwise PCA will not be able to find the optimal Principal Components. Use StandardScaler from Scikit Learn to standardize the dataset features onto unit scale (mean = 0 and standard deviation = 1) which is a requirement for the optimal performance of many Machine Learning algorithms.
+* Information Loss: Although Principal Components try to cover maximum variance among the features in a dataset, if we don't select the number of Principal Components with care, it may miss some information as compared to the original list of features.
 
 # Other
 ## Segmentation: https://nanonets.com/blog/semantic-image-segmentation-2020/
