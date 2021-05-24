@@ -51,7 +51,7 @@ chosing a learning rate:
 * Linesearch: keep walking in the same direction as long as 𝑓 is still decreasing
 
 
-#### 4)what is batch gradient descent, stachastic gradient descent, mini-batch gradient descent?
+#### 4)what is batch gradient descent, stochastic gradient descent, mini-batch gradient descent?
 1. batch gradient descent calculates the error for each sample within the training dataset, but only after all training samples have been evaluated does the model get updated
      
      ![image](https://user-images.githubusercontent.com/63558665/117908665-d2730280-b2a6-11eb-8265-935f26e9e2d8.png)
