@@ -109,35 +109,37 @@ An activation function in a neural network defines how the weighted sum of the i
    
     ![image](https://user-images.githubusercontent.com/63558665/117915606-9b571e00-b2b3-11eb-8088-9833fa80ca75.png)
     * ad:Smooth gradient, preventing “jumps” in output values.Output values bound between 0 and 1, normalizing the output of each neuron.
-    * disad:sigmoid cause vanishing gradient, and the gradient will be zero when x is inf and -inf,there is almost no change to the prediction, causing a vanishing gradient problem. This can result in the network refusing to learn further, or being too slow to reach an accurate prediction.Outputs not zero centered.Computationally expensive
+    * disad:sigmoid cause vanishing gradient, and the gradient will be zero when x is inf and -inf caused by that there is almost no change to the prediction. This can result in the network refusing to learn further, or being too slow to reach an accurate prediction.Outputs not zero centered.Computationally expensive
     
-* Tanh: tanh is also like logistic sigmoid but better. The range of the tanh function is from (-1 to 1). tanh is also sigmoidal (s - shaped).The advantage is that The larger 
-* the input (more positive), the closer the output value will be to 1.0, whereas the smaller the input (more negative), the closer the output will be to -1.0.
+* Tanh: tanh is also like logistic sigmoid but better. The range of the tanh function is from (-1 to 1). tanh is also sigmoidal (s - shaped).
 
     ![image](https://user-images.githubusercontent.com/63558665/117915997-54b5f380-b2b4-11eb-8634-8374ed7a6fea.png)
-    * ad:Zero centered—making it easier to model inputs that have strongly negative, neutral, and strongly positive values.Otherwise like the Sigmoid function
-    * disad: Like sigmoid
+    
+   * ad:Zero centered—making it easier to model inputs that have strongly negative, neutral, and strongly positive values.Otherwise like the Sigmoid function
+   * disad: Like sigmoid
     
 * ReLU: the ReLU is half rectified (from bottom). f(z) is zero when z is less than zero and f(z) is equal to z when z is above or equal to zero.
      
-     * simple, easy to calcualte, gradient is 1, which can partially solve the gradient vanishing problem
-     * some part of neural network will never update.All the negative values become zero immediately which decreases the ability of the model to fit or train from the data properly. That means any negative input given to the ReLU activation function turns the value into zero immediately in the graph, which in turns affects the resulting graph by not mapping the negative values appropriately.
 
      ![image](https://user-images.githubusercontent.com/63558665/117916165-99418f00-b2b4-11eb-84e1-7f389050b1ce.png)
+     
      * ad:Computationally efficient—allows the network to converge very quickly.Non-linear—although it looks like a linear function, ReLU has a derivative function and allows for backpropagation
      * disad:The Dying ReLU problem—when inputs approach zero, or are negative, the gradient of the function becomes zero, the network cannot perform backpropagation and cannot learn
+    
 * Leaky ReLU:It is an attempt to solve the dying ReLU problem.The leak helps to increase the range of the ReLU function. Usually, the value of a is 0.01 or so.Therefore the range of the Leaky ReLU is (-infinity to infinity)
 
      ![image](https://user-images.githubusercontent.com/63558665/117916241-c42be300-b2b4-11eb-9c71-1424670f90fd.png)
+     
      * ad:Prevents dying ReLU problem—this variation of ReLU has a small positive slope in the negative area, so it does enable backpropagation, even for negative input values
 Otherwise like ReLU
      * disad:Results not consistent—leaky ReLU does not provide consistent predictions for negative input values.
 * ELU:
-     * avoid the dying ReLU
-     * high computation cost
+
 
      ![image](https://user-images.githubusercontent.com/63558665/117920827-9e570c00-b2bd-11eb-8ab2-0918a2596b3e.png)
-
+     
+     * avoid the dying ReLU
+     * high computation cost
 
 * softmax function outputs a vector of values that sum to 1.0 that can be interpreted as probabilities of class membership
 
